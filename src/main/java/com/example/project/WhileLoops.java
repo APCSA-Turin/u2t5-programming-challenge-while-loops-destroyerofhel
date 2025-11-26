@@ -2,24 +2,7 @@ package com.example.project;
 
 
 public class WhileLoops {
-
-
-   // ============================================================
-   // U2T5 - Programming Challenge! While Loop Practice (TIMED)
-   // Rules:
-   // - You MUST use while loops (no for loops, no recursion).
-   // - Do not use any library methods that we haven't learned in class
-   // and that can “solve” it for you (ex. streams).
-   // - You may create helper variables inside methods if needed.
-
-    //You have period 7 to complete the challenge. 
-    //You should manually test with WhileLoopsRunner before running the gradle
-    //tests
-    //run ./gradlew test when you are ready. 
-   //// ============================================================
-
-
-   /**
+    /**
     * Returns the number of even integers between 1 and n (inclusive).
     * If n < 1, return 0.
     *
@@ -29,10 +12,17 @@ public class WhileLoops {
     * countEvensUpTo(6) -> 3 // {2, 4, 6}
     * countEvensUpTo(10) -> 5 // {2, 4, 6, 8, 10}
     */
-   public static int countEvensUpTo(int n) {
-       // YOUR CODE HERE
-       return -1;
-   }
+    public static int countEvensUpTo(int n) {
+        // YOUR CODE HERE
+        int evenNumbers = 0;
+        while(n > 0) {
+            if(n%2 == 0) {
+                evenNumbers++;
+            }
+            n--;
+        }
+        return evenNumbers;
+    }
 
 
    /**
@@ -46,10 +36,16 @@ public class WhileLoops {
     * digitSum(4098) -> 21 // 4 + 0 + 9 + 8
     * digitSum(199) -> 19 // 1 + 9 + 9
     */
-   public static int digitSum(int n) {
-       // YOUR CODE HERE
-       return -1;
-   }
+    public static int digitSum(int n) {
+        int highestPower = (int)Math.log10(n);
+        int sum = 0;
+        while(highestPower >= 0) {
+            sum += (int)(n/Math.pow(10,highestPower));
+            n %= Math.pow(10,highestPower);
+            highestPower--;
+        }
+        return sum;
+    }
 
 
    /**
@@ -72,8 +68,12 @@ public class WhileLoops {
     * // can't subtract without going negative
     */
    public static int countDownBy(int start, int step) {
-       // YOUR CODE HERE
-       return -1;
+        if(step <= 0) return start; 
+        if(step > start) return start;
+        while(start >= 0) {
+            start -= step;
+        }
+       return start + step;
    }
 
 
@@ -104,10 +104,15 @@ public class WhileLoops {
     * weeksToReachGoal(10, 10, 40) -> 3
     * // 10 -> 20 -> 30 -> 40
     */
-   public static int weeksToReachGoal(int startBalance, int weeklyDeposit, int goalBalance) {
-       // CODE HERE
-       return -1;
-   }
+    public static int weeksToReachGoal(int startBalance, int weeklyDeposit, int goalBalance) {
+        if(startBalance > goalBalance) return 0;
+        int weeks = 0;
+        while(startBalance < goalBalance) {
+            startBalance += weeklyDeposit;
+            weeks++;
+        }
+        return weeks;
+    }
 
 
    /**
@@ -139,11 +144,17 @@ public class WhileLoops {
     * minutesUntilDead(50, 0) -> 0
     * // battery would never drain
     */
-   public static int minutesUntilDead(int startPercent, int perMinuteUse) {
-       //YOUR CODE HERE
-       return -1;
-   }
+    public static int minutesUntilDead(int startPercent, int perMinuteUse) {
+        if(startPercent <= 0 || perMinuteUse <= 0) { return 0; }
+        int minutes = 0;
+        while(startPercent > 0) {
+            startPercent -= perMinuteUse;
+            minutes++;
+        }
+        return minutes;
+    }
 }
+
 
 
 
